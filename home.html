@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SmartFit — Home</title>
+
+<!-- Bootstrap & jQuery -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- jQuery Mobile -->
+<script>
+$(document).on("mobileinit", function() {
+  $.mobile.ajaxEnabled = false;
+  $.mobile.pushStateEnabled = false;
+});
+</script>
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+html, body { height:100%; margin:0; background:#000; font-family:'Poppins',sans-serif; overflow-x:hidden; color:#fff; }
+#bgVideo { position: fixed; right:0; bottom:0; min-width:100%; min-height:100%; object-fit:cover; z-index:0; filter:brightness(0.6); }
+
+/* Floating particles */
+.particle { position:absolute; border-radius:50%; background: rgba(255,255,255,0.1); animation: float 12s linear infinite; }
+@keyframes float { 0% { transform: translateY(0) translateX(0); opacity:0.2; } 50% { opacity:0.6; } 100% { transform: translateY(-120px) translateX(40px); opacity:0.2; } }
+
+/* Glass box */
+.glass-box {
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 60px;
+  box-shadow:0 4px 30px rgba(0,0,0,0.4);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+
+/* Logo glow */
+.logo { font-size:3em; font-weight:700; color:#fff; text-shadow:0 0 10px #00fff2,0 0 20px #00bfa6,0 0 30px #007bff; animation:glow 2s ease-in-out infinite alternate; margin-bottom:10px; }
+@keyframes glow { from{ text-shadow:0 0 10px #00fff2,0 0 20px #00bfa6,0 0 30px #007bff; } to { text-shadow:0 0 25px #00fff2,0 0 35px #00bfa6,0 0 45px #007bff; } }
+.tagline { font-size:1.2em; margin-bottom:25px; opacity:0.9; }
+
+/* Buttons for all pages */
+.ui-btn {
+  background: linear-gradient(45deg,#00fff2,#007bff);
+  color:#fff !important;
+  font-weight:700;
+  border:none !important;
+  width:80%;
+  margin:12px auto;
+  border-radius:14px !important;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4),0 0 20px #00fff2,0 0 40px #007bff;
+  transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+  text-shadow:0 0 5px #00fff2;
+  animation:pulseGlow 2.5s infinite alternate;
+}
+.ui-btn:hover { transform:scale(1.08) rotate(-1deg); box-shadow:0 12px 30px rgba(0,0,0,0.5),0 0 40px #00fff2,0 0 60px #007bff; filter:brightness(1.2);}
+.ui-btn:active { transform:scale(0.98); box-shadow:0 6px 15px rgba(0,0,0,0.3),0 0 20px #00fff2; }
+@keyframes pulseGlow { 0% { box-shadow:0 6px 20px rgba(0,0,0,0.4),0 0 20px #00fff2,0 0 40px #007bff; } 100% { box-shadow:0 8px 30px rgba(0,0,0,0.5),0 0 30px #00fff2,0 0 60px #007bff; } }
+
+/* Service cards */
+.service-cards { display:flex; flex-wrap:wrap; justify-content:center; margin-top:20px; }
+.service-card { background:#fff !important; color:#222 !important; border-radius:14px; padding:20px; margin:10px; width:180px; box-shadow:0 6px 20px rgba(0,0,0,0.25); cursor:pointer; transition: transform .2s, box-shadow .2s; opacity:0; transform: translateY(20px); animation: cardFade 0.8s forwards;}
+.service-card:hover { transform:translateY(-6px) scale(1.03); box-shadow:0 12px 30px rgba(0,0,0,0.35),0 0 20px #00fff2;}
+@keyframes cardFade { to { opacity:1; transform:translateY(0); } }
+
+.ui-header, .ui-footer { background:rgba(0,0,0,0.35) !important; color:white !important; border:none !important; z-index:3; }
+
+</style>
+</head>
+
+<body>
+<div data-role="page" id="home">
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="bg-video.mp4" type="video/mp4">
+  </video>
+
+  <div class="particle" style="width:100px;height:100px;top:20%;left:10%; animation-delay:0s;"></div>
+  <div class="particle" style="width:60px;height:60px;top:50%;left:70%; animation-delay:2s;"></div>
+  <div class="particle" style="width:80px;height:80px;top:75%;left:40%; animation-delay:4s;"></div>
+
+  <div data-role="header"><h1>SmartFit Wellness</h1></div>
+
+  <div role="main" class="ui-content">
+    <div class="glass-box">
+      <div class="logo">SmartFit</div>
+      <p class="tagline">Your Journey to Fitness Starts Here</p>
+
+      <div class="service-cards">
+        <div class="service-card">🏋️ Personal Training</div>
+        <div class="service-card">🧘 Yoga Classes</div>
+        <div class="service-card">💆 Massage Therapy</div>
+      </div>
+
+      <a href="services.html" data-ajax="false" data-transition="slide" class="ui-btn ui-corner-all">Explore Our Services</a>
+      <a href="contact.html" data-ajax="false" data-transition="fade" class="ui-btn ui-corner-all">Get in Touch</a>
+    </div>
+  </div>
+
+  <div data-role="footer" data-position="fixed"><h4>&copy; 2025 SmartFit Wellness Centre</h4></div>
+</div>
+
+<script>
+$(".service-card").each(function(index){ $(this).css("animation-delay",(index*0.2)+"s"); });
+</script>
+</body>
+</html>

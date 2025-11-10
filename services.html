@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SmartFit — Services</title>
+
+<!-- Bootstrap & jQuery -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+$(document).on("mobileinit", function() {
+  $.mobile.ajaxEnabled = false;
+  $.mobile.pushStateEnabled = false;
+});
+</script>
+
+<!-- jQuery Mobile -->
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+html,body{
+  height:100%;
+  margin:0;
+  background:#000;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+}
+
+/* Background video */
+#bgVideo{
+  position:fixed;
+  right:0;
+  bottom:0;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  z-index:0;
+  filter:brightness(0.6);
+}
+
+/* Transparent background for pages */
+.ui-page,.ui-page .ui-content{
+  background:transparent!important;
+}
+.ui-page>.ui-header, 
+.ui-page>.ui-content, 
+.ui-page>.ui-footer{
+  position:relative;
+  z-index:2;
+}
+.ui-header,.ui-footer{
+  background:rgba(0,0,0,0.35)!important;
+  color:#fff!important;
+  border:none!important;
+}
+
+/* Service cards */
+.service-card {
+  background:#fff !important;
+  color:#222 !important;
+  border-radius:14px;
+  padding:20px;
+  margin:14px auto;
+  max-width:420px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+  cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+  text-align:center;
+}
+.service-card:hover {
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 30px rgba(0,0,0,0.35),0 0 20px #00fff2;
+}
+
+/* Glowing button */
+.ui-btn {
+  background: linear-gradient(45deg,#00fff2,#007bff);
+  color:#fff !important;
+  font-weight:700;
+  border:none !important;
+  width:84%;
+  max-width:420px;
+  margin:12px auto;
+  border-radius:14px !important;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4),0 0 20px #00fff2,0 0 40px #007bff;
+  transition: transform .3s, box-shadow .3s, filter .3s;
+  text-shadow:0 0 5px #00fff2;
+  animation:pulseGlow 2.5s infinite alternate;
+}
+.ui-btn:hover {
+  transform:scale(1.08) rotate(-1deg);
+  box-shadow:0 12px 30px rgba(0,0,0,0.5),0 0 40px #00fff2,0 0 60px #007bff;
+  filter:brightness(1.2);
+}
+.ui-btn:active {
+  transform:scale(0.98);
+  box-shadow:0 6px 15px rgba(0,0,0,0.3),0 0 20px #00fff2;
+}
+@keyframes pulseGlow{
+  0%{box-shadow:0 6px 20px rgba(0,0,0,0.4),0 0 20px #00fff2,0 0 40px #007bff;}
+  100%{box-shadow:0 8px 30px rgba(0,0,0,0.5),0 0 30px #00fff2,0 0 60px #007bff;}
+}
+
+/* Popups - improved visibility */
+.ui-popup-container {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-radius: 18px !important;
+  padding: 20px;
+  box-shadow: 0 0 25px #00fff2, 0 0 50px #007bff;
+  text-align:center;
+}
+
+.ui-popup {
+  background: transparent !important;
+  color: #fff !important;
+}
+
+.ui-popup h3 {
+  color:#00fff2;
+  text-shadow:0 0 10px #007bff;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.ui-popup p, .ui-popup strong {
+  color:#fff;
+  text-shadow:none;
+  margin:6px 0;
+}
+
+</style>
+</head>
+
+<body>
+<div data-role="page" id="services">
+
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="bg-video.mp4" type="video/mp4">
+  </video>
+
+  <div data-role="header" data-add-back-btn="true">
+    <h1>Our Services</h1>
+  </div>
+
+  <div role="main" class="ui-content">
+    <!-- Service cards -->
+    <div class="service-card" id="card-training">🏋️ Personal Training<br><strong>RM80 / session</strong></div>
+    <div class="service-card" id="card-yoga">🧘 Yoga Class<br><strong>RM50 / session</strong></div>
+    <div class="service-card" id="card-massage">💆 Massage Therapy<br><strong>RM100 / hour</strong></div>
+
+    <a href="home.html" class="ui-btn ui-corner-all" data-ajax="false" data-transition="slide">Back to Home</a>
+  </div>
+
+  <div data-role="footer" data-position="fixed">
+    <h4>&copy; 2025 SmartFit Wellness Centre</h4>
+  </div>
+
+  <!-- Popups -->
+  <div data-role="popup" id="popup-training" class="ui-content">
+    <h3>🏋️ Personal Training</h3>
+    <p>One-on-one sessions with certified trainers.</p>
+    <p>Customized workouts to achieve your goals efficiently.</p>
+    <p><strong>Price:</strong> RM80 / session</p>
+  </div>
+
+  <div data-role="popup" id="popup-yoga" class="ui-content">
+    <h3>🧘 Yoga Class</h3>
+    <p>Improve flexibility, posture, and mental clarity.</p>
+    <p>Guided by certified yoga instructors for all levels.</p>
+    <p><strong>Price:</strong> RM50 / session</p>
+  </div>
+
+  <div data-role="popup" id="popup-massage" class="ui-content">
+    <h3>💆 Massage Therapy</h3>
+    <p>Relax, recover, and reduce stress with professional massage therapy.</p>
+    <p>Choose from Swedish, deep tissue, and relaxation techniques.</p>
+    <p><strong>Price:</strong> RM100 / hour</p>
+  </div>
+
+</div>
+
+<script>
+$("#card-training").click(function(){ $("#popup-training").popup("open"); });
+$("#card-yoga").click(function(){ $("#popup-yoga").popup("open"); });
+$("#card-massage").click(function(){ $("#popup-massage").popup("open"); });
+</script>
+
+</body>
+</html>
